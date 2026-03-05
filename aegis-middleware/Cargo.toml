@@ -3,5 +3,17 @@ name = "aegis-middleware"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "aegis_middleware"
+path = "src/lib.rs"
+
 [dependencies]
 aegis-core = { path = "../aegis-core" }
+axum = "0.7"
+http = "1"
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tower-layer = "0.3"
+tower-service = "0.3"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
