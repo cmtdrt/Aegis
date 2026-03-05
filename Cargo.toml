@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "aegis-core",
+    "aegis-middleware",
+    "aegis-proxy",
+]
+resolver = "2"
