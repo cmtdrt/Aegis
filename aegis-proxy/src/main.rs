@@ -13,10 +13,6 @@ use tracing_subscriber::EnvFilter;
 
 use aegis_core::{AegisConfig, AegisEngine, AegisError, AegisRequest};
 
-// ---------------------------------------------------------------------------
-// Configuration
-// ---------------------------------------------------------------------------
-
 #[derive(Deserialize)]
 struct ProxyConfig {
     listen: String,
