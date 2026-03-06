@@ -5,3 +5,13 @@ edition = "2021"
 
 [dependencies]
 aegis-core = { path = "../aegis-core" }
+axum = "0.7"
+http = "1"
+http-body-util = "0.1"
+reqwest = { version = "0.12", features = ["json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

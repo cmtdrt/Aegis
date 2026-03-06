@@ -1,0 +1,16 @@
+listen = "0.0.0.0:3000"
+upstream = "http://localhost:8080"
+max_body_size = 10485760 # 10 MB
+
+[aegis.rate_limit]
+max_requests = 100
+window_secs = 60
+
+[aegis.ip_filter]
+blacklist = [
+    http://localhost:3000,
+]
+
+[aegis.inspection]
+max_body_size = 1048576 # 1 MB
+blocked_patterns = ["<script>", "../"]
