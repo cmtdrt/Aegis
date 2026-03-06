@@ -30,9 +30,6 @@ fn default_max_body_size() -> usize {
     10 * 1024 * 1024 // 10 MB
 }
 
-// ---------------------------------------------------------------------------
-// Shared state
-// ---------------------------------------------------------------------------
 
 struct ProxyState {
     engine: AegisEngine,
@@ -40,10 +37,6 @@ struct ProxyState {
     max_body_size: usize,
     client: reqwest::Client,
 }
-
-// ---------------------------------------------------------------------------
-// Entry point
-// ---------------------------------------------------------------------------
 
 #[tokio::main]
 async fn main() {
@@ -85,9 +78,6 @@ async fn main() {
     .unwrap();
 }
 
-// ---------------------------------------------------------------------------
-// Proxy handler
-// ---------------------------------------------------------------------------
 
 async fn handle_proxy(
     State(state): State<Arc<ProxyState>>,
@@ -131,8 +121,6 @@ async fn handle_proxy(
     if let Err(err) = state.engine.evaluate(&aegis_request) {
         return aegis_error_response(err);
     }
-
-    // ---- Forward to upstream ------------------------------------------------
 
     let path_and_query = parts
         .uri
@@ -178,10 +166,6 @@ async fn handle_proxy(
         }
     }
 }
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 
 fn resolve_client_ip(request: &Request<Body>, fallback: SocketAddr) -> IpAddr {
     if let Some(xff) = request.headers().get("x-forwarded-for") {
